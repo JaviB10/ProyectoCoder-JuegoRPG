@@ -1,11 +1,12 @@
 let personajes = []
 
 class Personaje {
-    constructor (clase, vida, ataque, defensa, descripcion) {
+    constructor (clase, vida, ataque, defensa, habilidad, descripcion) {
         this.clase = clase;
         this.vida = vida;
         this.ataque = ataque;
         this.defensa = defensa;
+        this.habilidad = habilidad;
         this.descripcion = descripcion;
     }
 }
@@ -26,30 +27,33 @@ elegirHeroe = () => {
     eleccion = prompt('Opcion 1 : Guerrero - Opcion 2 : Mago - Opcion 3 : Arquero = Ingrese una de las opciones para escoger una personaje: '); 
     switch (eleccion) {
         case "1":
-            personajes.push (new Personaje ("Guerrero", 1000, 60, 50, "Clase de personaje cuya mayor habilidad o principal función es el ataque a corta distancia o cuerpo a cuerpo."));
+            personajes.push (new Personaje ("Guerrero", 1000, 60, 50, 170, "Clase de personaje cuya mayor habilidad o principal función es el ataque a corta distancia o cuerpo a cuerpo."));
             document.write ("<p> ELEGISTE AL SIGUIENTE PERSONAJE </p>")
             document.write ("<p> Clase: " + personajes[0].clase + "</p>")
             document.write ("<p> Vida: " + personajes[0].vida + "</p>")
             document.write ("<p> Ataque: " + personajes[0].ataque + "</p>")
             document.write ("<p> Defensa: " + personajes[0].defensa + "</p>")
+            document.write ("<p> Golpe Martillo: " + personajes[0].habilidad + "</p>")
             document.write ("<p> Descripcion: " + personajes[0].descripcion + "</p>")
             break;
         case "2":
-            personajes.push (new Personaje ("Mago", 800, 80, 50, "Clase de personaje con una defensa debil pero cuya habilidad magica le da un ataque superior al resto."));
+            personajes.push (new Personaje ("Mago", 800, 80, 50, 190, "Clase de personaje con una defensa debil pero cuya habilidad magica le da un ataque superior al resto."));
             document.write ("<p> ELEGISTE AL SIGUIENTE PERSONAJE </p>")
             document.write ("<p> Clase: " + personajes[0].clase + "</p>")
             document.write ("<p> Vida: " + personajes[0].vida + "</p>")
             document.write ("<p> Ataque: " + personajes[0].ataque + "</p>")
             document.write ("<p> Defensa: " + personajes[0].defensa + "</p>")
+            document.write ("<p> Golpe Estelar: " + personajes[0].habilidad + "</p>")
             document.write ("<p> Descripcion: " + personajes[0].descripcion + "</p>")
             break;
         case "3":
-            personajes.push (new Personaje ("Arquero", 900, 50, 50, "Clase de personaje que efectua ataques a distancia con poco poder pero cuenta con una defensa aceptable."));
+            personajes.push (new Personaje ("Arquero", 900, 50, 50, 165, "Clase de personaje que efectua ataques a distancia con poco poder pero cuenta con una defensa aceptable."));
             document.write ("<p> ELEGISTE AL SIGUIENTE PERSONAJE </p>")
             document.write ("<p> Clase: " + personajes[0].clase + "</p>")
             document.write ("<p> Vida: " + personajes[0].vida + "</p>")
             document.write ("<p> Ataque: " + personajes[0].ataque + "</p>")
             document.write ("<p> Defensa: " + personajes[0].defensa + "</p>")
+            document.write ("<p> Lluvia de Flechas: " + personajes[0].habilidad + "</p>")
             document.write ("<p> Descripcion: " + personajes[0].descripcion + "</p>")
             break;  
         default:
@@ -143,6 +147,7 @@ while (i < 2 && personajes[0].vida > 0) {
     if (i == 1) {
         personajes[0].vida += 200
         document.write ("<p> Has ganado la primer batalla. Le hemos proporcionado a tu Heroe una recarga de vida. </p>")
+        document.write ("<hr>")
         personajes.splice(1) 
     }
     elegirMonstruo();
@@ -163,20 +168,32 @@ while (i < 2 && personajes[0].vida > 0) {
     i += 1
 }
 
+let golpeCritico = 0
 if (i == 2) {
     personajes[0].vida += 600
     personajes[0].ataque += 30
     document.write ("<p> Has ganado tu segunda batalla, ahora te enfrentaras al Boss. Le hemos proprocionado a tu Heroe una recarga de vida </p>")
+    document.write ("<hr>")
     elegirBoss();
+    document.write ("<hr>")
     while (personajes[0].vida > 0 && personajes[2].vida > 0) {
         if (acierto()) {
-            personajes[2].vida -= personajes[0].ataque;
-            document.write ("<p> El heroe acerto un golpe al monstruo </p>");
-            document.write ("<p> La vida del villano ahora es de: " + personajes[2].vida + "</p>");
-            document.write ("<hr>")
+            if (golpeCritico == 3){
+                personajes[2].vida -= personajes[0].habilidad;
+                document.write ("<p> El heroe acerto un golpe critico al boss </p>");
+                document.write ("<p> La vida del villano ahora es de: " + personajes[2].vida + "</p>");
+                document.write ("<hr>")
+                golpeCritico = 0
+            }else {
+                personajes[2].vida -= personajes[0].ataque;
+                document.write ("<p> El heroe acerto un golpe al boss </p>");
+                document.write ("<p> La vida del villano ahora es de: " + personajes[2].vida + "</p>");
+                document.write ("<hr>")
+                golpeCritico += 1
+            }
         } else {
             personajes[0].vida -= personajes[2].ataque;
-            document.write ("<p> El monstruo acerto un golpe a tu heroe </p>");
+            document.write ("<p> El boss acerto un golpe a tu heroe </p>");
             document.write ("<p> La vida de tu heroe ahora es de: " + personajes[0].vida + "</p>");
             document.write ("<hr>")
         }
