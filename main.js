@@ -543,13 +543,54 @@ const heroeAtacara = () => {
 
 //Funcion encargada de ejecutar el juego cuando el usuario elija un personaje. El heroe se enfrenta a dos villanos y luego al boss, todo esto si sigue con vida, en caso de quedar sin vida en alguno de los combates el codigo finaliza mostrando el resultado
 let repeticion = 0
+let segundaVuelta = 0
 let ejecucionJuego = () => {
     if (repeticion == 0) {
+        let aparicionVillano = document.createElement ('h2')
+        aparicionVillano.innerHTML += `ACABA DE APARECER UN VILLANO AL CUAL TE DEBERAS ENFRENTAR`
         datosPersonajesH();
+        document.body.appendChild(aparicionVillano)
         elegirMonstruo();
         repeticion = 1
     } 
-    queHaraVillano();
-    heroeAtacara();
+    if (repeticion == 1 && segundaVuelta == 1){
+        let aparicionVillano = document.createElement ('h2')
+        aparicionVillano.innerHTML += `ACABA DE APARECER UN SEGUNDO VILLANO AL CUAL TE DEBERAS ENFRENTAR`
+        datosPersonajesH();
+        document.body.appendChild(aparicionVillano)
+        elegirMonstruo();
+        repeticion = 2
+    } 
+    if (repeticion == 2 && segundaVuelta == 2) {
+        let aparicionBoss = document.createElement ('h2')
+        aparicionBoss.innerHTML += `ACABA DE APARECER UN BOSS AL CUAL TE DEBERAS ENFRENTAR`
+        datosPersonajesH();
+        document.body.appendChild(aparicionBoss)
+        elegirBoss();
+        repeticion = 1
+        segundaVuelta = 3
+    }
+
+    if ((personajes[0].vida > 0) && (personajes[1].vida > 0)) {
+        queHaraVillano();
+        heroeAtacara();
+    } else if ((personajes[0].vida > 0) && (personajes[1].vida <= 0)) {
+        if (segundaVuelta == 0) {
+            console.log ("entro aca")
+            segundaVuelta = 1
+            personajes.splice(1);
+        } else if (segundaVuelta == 1) {
+            console.log ("entro aca 2")
+            segundaVuelta = 2
+            personajes.splice(1);
+        }
+    } else if ((personajes[0].vida <= 0) && (personajes[1].vida > 0)) {
+        let mensajePartida = document.createElement ('h2')
+        mensajePartida.innerHTML += `FUISTE DERROTADO`
+        document.body.appendChild(mensajePartida)
+    }
+    if (repeticion == 1 && segundaVuelta == 3) {
+        console.log ("termino el juego")
+    }
 }           
     
