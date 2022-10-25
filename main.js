@@ -18,6 +18,54 @@ class Personaje {
     }
 }
 
+let oprimirJugar = document.getElementById("jugar")
+oprimirJugar.onclick = () => {
+    let quitarElementos = document.getElementById("quitarElementos")
+    quitarElementos.classList.add ("cambio")
+    let nuevaSeccion = document.getElementById("nuevoElemento")
+    nuevaSeccion.innerHTML = 
+    `   
+        
+            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner centrar">
+                    <div class="carousel-item active">
+                        <div class="d-flex flex-column">
+                            <img src="./img/guerrero.png" class="personajesGuerrero" alt="Guerrero">
+                            <button class="btnEleccion" type="button" id="guerrero">WARRIOR</button>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="d-flex flex-column">
+                            <img src="./img/mago.png" class="personajesMago" alt="Mago">
+                            <button class="btnEleccion" type="button" id="mago">WIZARD</button>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="d-flex flex-column">
+                            <img src="./img/arquero.png" class="personajesArquero" alt="Arquero">
+                            <button class="btnEleccion" type="button" id="flechero">ARCHER</button>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        
+    `
+}
+
+
 //Dependiendo de la eleccion del usuario se crea el objeto deseado (Guerrero - Mago - Arquero). El mismo se guarda en un array.
 let eleccionG = document.getElementById ("guerrero")
 eleccionG.onclick = () => {
@@ -29,7 +77,8 @@ eleccionG.onclick = () => {
     personajes.push (new Personaje ("Guerrero", 100, 200, 0, 1, 10, 1, 10, 30, 60, "Clase de personaje cuya mayor habilidad o principal función es el ataque a corta distancia o cuerpo a cuerpo."));
     personajes[0].vida = vidaAdquiridaH();
     localStorage.setItem ("Heroe", JSON.stringify(personajes[0]));
-    ejecucionJuego();
+    arrancaJuego();
+    
 }
 let eleccionM = document.getElementById ("mago")    
 eleccionM.onclick = () => { 
@@ -55,6 +104,67 @@ eleccionA.onclick = () => {
     localStorage.setItem ("Heroe", JSON.stringify(personajes[0]));
     ejecucionJuego();
 }
+
+let arrancaJuego = () => {
+    console.log ("entro acaaaaa")
+    let quitarElementos = document.getElementById("carrusel")
+    quitarElementos.classList.add ("cambio")
+    let modoJuego = document.getElementById("nuevoElemento")
+    modoJuego.innerHTML = 
+    `
+    <div class="contenedorJuego">
+            <div class="barraEnemigo">
+                <div class="barraNombreEnemigo">
+
+                </div>
+                <div class="barraVidaEnemigo">
+
+                </div>
+            </div>
+
+            <div class="barraHeroe">
+                <div class="barraNombreEnemigo">
+
+                </div>
+                <div class="barraVidaEnemigo">
+
+                </div>
+            </div>
+
+            <div class="barraPrincipal"> 
+                <div class="barraMensajes">
+
+                </div>
+
+                <div class="barraAcciones">
+                    <div class="container text-center">
+                        <div class="row">
+                            <div class="col-6">
+                                <button class="btnAcciones" type="button" id="jugar">ATACAR</button>
+                            </div>
+                            <div class="col-6">
+                                <button class="btnAcciones" type="button" id="jugar">DEFENDER</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 mt-1">
+                                <button class="btnAcciones" type="button" id="jugar">HABILIDAD</button>
+                            </div>
+                            <div class="col-6 mt-1">
+                                <button class="btnAcciones" type="button" id="jugar">MOCHILA</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <img class="jugadorHeroe" src="./img/knight.png" alt="Knight">
+            <img class="jugadorEnemigo" src="./img/esqueleto.png" alt="Esqueleto">
+
+        </div>
+    `
+}
+
 
 //Al azar se crea un objeto el cual es el villano
 let eleccionV = 0
@@ -563,3 +673,7 @@ let ejecucionJuego = () => {
         console.log ("El juego ha concluido")
     }
 }         
+
+
+
+
