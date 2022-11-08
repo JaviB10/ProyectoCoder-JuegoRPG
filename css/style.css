@@ -3,10 +3,141 @@
     src: url(./fuentes/OptimusPrincepsSemiBold.ttf);
 }
 
+* {
+    margin: 0;
+    padding: 0;
+}
+
 h2, p{
     font-family: OptimusPrincepsSemiBold;
     color: white;
 }
+
+.tamañoFuenteH2 {
+    font-size: 20px;
+}
+
+/* Estilos para la primera pantalla */
+.contenedorPrimero{
+    height: 100vh;
+    display: flex;
+    align-content: space-around;
+}
+.bannerPrincipal {
+    width: 100%;
+    height: 100vh;
+    background-image: url(../img/bannerPrincipal.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+.logoCarrusel {
+    width: none;
+    height: 50vh;
+    animation: rollIn 2s;
+}
+.btnJugar {
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+}
+
+/* Estilos para la segunda pantalla */
+.contenedorSegundo{
+    height: 100vh;
+}
+.bannerEleccion {
+    width: 100%;
+    height: 100vh;
+    background-image: url(../img/bannerPaginaEleccion.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+.mensajeEleccion{
+    color:white;
+    font-size: 50px;
+}
+.personajesGuerrero {
+    width: 800px;
+    height: 95%;
+}
+.btnEleccionPersonaje {
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+}
+
+/* Estilos para la tercer pantalla */
+.personajesMonstruo {
+    width: 800px;
+    height: 95%;
+}
+.btnIrBatalla {
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+}
+
+/* Estilos para la pantalla de batalla*/
+.contenedorTercero {
+    height: 100vh;
+    display: flex;
+    align-content: space-around;
+    justify-content: space-around;
+}
+.bannerBatalla {
+    width: 100vw; 
+    height: 100vh;
+    background-image: url(../img/paredBatalla.jpg);
+    background-size: cover;
+    background-position: center;
+}
+.bannerDatosPersonajes{
+    width: 500px;
+    background-image: url(../img/bannerDatosPersonajes.jpg);
+    border-radius: 20px;
+    opacity: 0.8;
+}
+.barraPrincipal {
+    width: 90vw;
+    background-image: url(../img/tablaMensajes.jpg);
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    opacity: 0.8;
+}
+.contenedorAcciones {
+    height: 200px;
+}
+.btnAcciones {
+    width: 100%;
+    height: 75px;
+    cursor: pointer;
+}
+/* Estilos para la pagina de victoria*/
+.bannerVictoria {
+    width: 100vw; 
+    height: 100vh;
+    background-image: url(../img/bannerVictoria.jpg);
+    background-size: cover;
+    background-position: center;
+}
+.movimientoVictoria {
+    animation: zoomInDown 2s;
+}
+/* Estilos para la pagina de derrota */
+.bannerDerrota {
+    width: 100vw; 
+    height: 100vh;
+    background-image: url(../img/bannerDerrota.jpg);
+    background-size: cover;
+    background-position: center;
+}
+.movimientoDerrota {
+    animation: rotateOutDownLeft 2s;
+}
+
+
 .datos{
     
     height: 100%;
@@ -23,82 +154,6 @@ h2, p{
     height: 600px;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-}
-.colorAmarillo {
-    color: #fcd201;
-}
-header {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0px;
-    z-index: 3;
-}
-header img {
-    width: 300px;
-    height: 75px;
-    margin-left: 0.5rem;
-}
-
-.bannerPrincipal {
-    width: 100%;
-    height: 100vh;
-    background-image: url(../img/bannerPrincipal.jpg);
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-}
-
-.bannerEleccion {
-    width: 100%;
-    height: 100vh;
-    background-image: url(../img/bannerPaginaEleccion.jpg);
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-}
-
-.movimientoDerrota {
-    animation: rotateOutDownLeft 2s;
-}
-.movimientoVictoria {
-    animation: zoomInDown 2s;
-}
-
-.dragonJuego {
-    width: 250px;
-    height: 280px;
-    position: relative;
-    top: 10px;
-}
-
-.logoCarrusel {
-    width: none;
-    height: 50vh;
-    position: relative;
-    top: 350px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    animation: rollIn 2s;
-    
-}
-
-.btnHabilidadRojo {
-    background-color: grey;
-}
-.btnHabilidadVerde {
-    background-color: green;
-}
-
-.btnJugar {
-    width: 150px;
-    height: 50px;
-    position: relative;
-    top: 900px;
-}
 
 .btnEleccion {
     width: 250px;
@@ -108,6 +163,33 @@ header img {
     top: 50px;
     right: 120px;
 }
+
+
+
+
+
+
+
+
+.dragonJuego {
+    width: 250px;
+    height: 280px;
+    position: relative;
+    top: 10px;
+}
+
+
+
+.btnHabilidadRojo {
+    background-color: grey;
+}
+.btnHabilidadVerde {
+    background-color: green;
+}
+
+
+
+
 .colorBtn {
     background-color: black;
     border-radius: 100px;
@@ -130,12 +212,7 @@ header img {
     display: none;
 }
 
-.personajesGuerrero {
-    width: 1000px;
-    height: 600px;
-    position: relative;
-    right: 500px;
-}
+
 .personajesMago {
     width: 500px;
     height: 500px;
@@ -154,39 +231,26 @@ header img {
     height: 500px;
 }
 
+.displayHader {
+    display: none;
+}
 
 .carousel {
     
     height: 90%;
 }
-.mensajeEleccion{
-    color:white;
-    font-size: 50px;
-    display: flex;
-    justify-content: center;
-    position: relative;
-    top: 100px;
-    
-}
 
 
-.centrar {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+
+
 
 .contenedorJuego {
-    width: 95%;
-    height: 85vh;
-    background-color: white;
+    width: 100vw;
+    height: 100vh;
     
-    border-radius: 20px;
-    position: relative;
-    top: 110px;
-    left: 50px;
+    
+    
+    
 }
 
 .barraEnemigo {
@@ -241,39 +305,21 @@ header img {
     left: 15px;
 }
 
-.barraPrincipal {
-    width: 99%;
-    height: 200px;
-    background-image: url(../img/tablaMensajes.jpg);
-    background-repeat: no-repeat;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-}
 
-.barraMensajes {
-    width: 50%;
-    height: 90%;
-    
-    border-radius: 20px;
-    
-}
+
+
 .barraAcciones {
     width: 45%;
-    height: 90%;
+    
     border-radius: 20px;
 }
-.btnAcciones {
-    width: 300px;
+
+
+.btnAccionesItems {
+    width: 200px;
     height: 75px;
-    position: relative;
-    top: 14px;
     cursor: pointer;
 }
-
-
 
 
 .nombreHeroe {
