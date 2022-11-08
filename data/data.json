@@ -1,0 +1,47 @@
+[
+    {
+        "id": 1,
+        "clase": "KNIGHT",
+        "vidaMin": 100,
+        "vidaMax": 200,
+        "vida": 0,
+        "ataqueMin": 1,
+        "ataqueMax": 10,
+        "defensaMin": 10,
+        "defensaMax": 15,
+        "habilidadMin": 30,
+        "habilidadMax": 60,
+        "descripcion": "Clase de personaje cuya mayor habilidad o principal función es el ataque a corta distancia o cuerpo a cuerpo.",
+        "imagen": "./img/knightJuego.svg"
+    },
+    {
+        "id": 2,
+        "clase": "WIZARD",
+        "vidaMin": 100,
+        "vidaMax": 180,
+        "vida": 0,
+        "ataqueMin": 1,
+        "ataqueMax": 15,
+        "defensaMin": 10,
+        "defensaMax": 20,
+        "habilidadMin": 30,
+        "habilidadMax": 60,
+        "descripcion": "Clase de personaje con una defensa debil pero cuya habilidad magica le da un ataque superior al resto.",
+        "imagen": "./img/wizardJuego.svg"
+    },
+    {
+        "id": 3,
+        "clase": "ARCHER",
+        "vidaMin": 100,
+        "vidaMax": 190,
+        "vida": 0,
+        "ataqueMin": 1,
+        "ataqueMax": 12,
+        "defensaMin": 10,
+        "defensaMax": 20,
+        "habilidadMin": 30,
+        "habilidadMax": 60,
+        "descripcion": "Clase de personaje que efectua ataques a distancia con poco poder pero cuenta con una defensa aceptable.",
+        "imagen": "./img/archerJuego.svg"
+    }
+]

@@ -123,6 +123,7 @@ const queHaraMonstruo = () => {
     }
 }
 
+
 //Funcion encargada de mostrar los personajes (Heroes), los cuales el usuario podra seleccionar para jugar, los mismo se crearan y se guardaran dentro de un array
 const elegirHeroe = () => {
     const cambioMusica = document.querySelector("#musicaJuego")
@@ -134,7 +135,7 @@ const elegirHeroe = () => {
         <div class="container text-center">
             <div class="row contenedorSegundo">
                 <div class="col-12 d-flex align-items-center justify-content-center">
-                    <h2 class="mensajeEleccion">ESCOGE TU PERSONAJE</h2>
+                    <h2 class="tamañoFuenteH2 mensajeEleccion">ESCOGE TU PERSONAJE</h2>
                 </div>
                 <div class="col-12">
                     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
@@ -237,7 +238,7 @@ const elegirHeroe = () => {
 
 let oprimirJugar = document.getElementById("jugar")
 oprimirJugar.onclick = () => {
-    elegirHeroe();
+    setTimeout(elegirHeroe, 200);
 }
 
 //Funcion encargada de el boss con el que se debera enfrentar el heroe
@@ -252,7 +253,7 @@ const mostrarEnemigo = () => {
         <div class="container text-center">
             <div class="row contenedorPrimero">
                 <div class="col-12">
-                    <h2 class="mensajeEleccion">TU ENEMIGO ES EL SIGUIENTE</h2>
+                    <h2 class="tamañoFuenteH2 mensajeEleccion">TU ENEMIGO ES EL SIGUIENTE</h2>
                 </div>
                 <div class="col-12">
                     <img class="personajesMonstruo rounded-5" alt="Villano" id="villano">
@@ -272,7 +273,7 @@ const mostrarEnemigo = () => {
         document.querySelector("#villano").setAttribute('src', "./img/skeleton.jpg")
     }
     document.querySelector("#comenzarJuego").onclick = () => {
-        arrancaJuego();
+        setTimeout(arrancaJuego, 200);
     }
 }
 
@@ -286,7 +287,7 @@ const mostrarBoss = () => {
         <div class="container text-center">
             <div class="row contenedorPrimero">
                 <div class="col-12">
-                    <h2 class="mensajeEleccion">TU ENEMIGO ES EL SIGUIENTE</h2>
+                    <h2 class="tamañoFuenteH2 mensajeEleccion">TU ENEMIGO ES EL SIGUIENTE</h2>
                 </div>
                 <div class="col-12">
                     <img class="personajesMonstruo rounded-5" alt="Villano" id="villano">
@@ -307,7 +308,7 @@ const mostrarBoss = () => {
         document.querySelector("#villano").setAttribute('src', "./img/demons.jpg")
     }
     document.querySelector("#comenzarJuego").onclick = () => {
-        arrancaJuego();
+        setTimeout(arrancaJuego, 200);
     }
 }
 
@@ -331,37 +332,37 @@ const habilidadGolpeEnemigo = () => {
 //Funcion encargada de mostrar los puntos de habilidad de los personajes (hereos, monstruos y boss)
 const cuantaHabilidadHeroe = () => {
     if (golpeCriticoH == 0) {
-        document.querySelector("#habilidadH").innerHTML = `hab = <img src="./img/puntosHabilidadCero.svg" alt="">`
+        document.querySelector("#habilidadH").innerHTML = `hab = <img class="landscape" src="./img/puntosHabilidadCero.svg" alt="">`
     } else if (golpeCriticoH == 1) {
-        document.querySelector("#habilidadH").innerHTML = `hab = <img src="./img/puntosHabilidadUno.svg" alt="">`
+        document.querySelector("#habilidadH").innerHTML = `hab = <img class="landscape" src="./img/puntosHabilidadUno.svg" alt="">`
     } else if (golpeCriticoH == 2) {
-        document.querySelector("#habilidadH").innerHTML = `hab = <img src="./img/puntosHabilidadDos.svg" alt="">`
+        document.querySelector("#habilidadH").innerHTML = `hab = <img class="landscape" src="./img/puntosHabilidadDos.svg" alt="">`
     } else {
-        document.querySelector("#habilidadH").innerHTML = `hab = <img src="./img/puntosHabilidadTres.svg" alt="">`
+        document.querySelector("#habilidadH").innerHTML = `hab = <img class="landscape" src="./img/puntosHabilidadTres.svg" alt="">`
     }
 }
 const cuantaHabilidadMonstruo = () => {
     if (golpeCriticoV == 0) {
-        document.querySelector("#habilidadM").innerHTML = `hab = <img src="./img/puntosHabilidadCero.svg" alt="">`
+        document.querySelector("#habilidadM").innerHTML = `hab = <img class="landscape" src="./img/puntosHabilidadCero.svg" alt="">`
     } else if (golpeCriticoV == 1) {
-        document.querySelector("#habilidadM").innerHTML = `hab = <img src="./img/puntosHabilidadUno.svg" alt="">`
+        document.querySelector("#habilidadM").innerHTML = `hab = <img class="landscape" src="./img/puntosHabilidadUno.svg" alt="">`
     } else if (golpeCriticoV == 2) {
-        document.querySelector("#habilidadM").innerHTML = `hab = <img src="./img/puntosHabilidadDos.svg" alt="">`
+        document.querySelector("#habilidadM").innerHTML = `hab = <img class="landscape" src="./img/puntosHabilidadDos.svg" alt="">`
     } else {
-        document.querySelector("#habilidadM").innerHTML = `hab = <img src="./img/puntosHabilidadTres.svg" alt="">`
+        document.querySelector("#habilidadM").innerHTML = `hab = <img class="landscape" src="./img/puntosHabilidadTres.svg" alt="">`
     }
 }
 
 //Funcion encargada de mostrar los corazones que le quedan al heroe para utilizar en caso de querer continuar la partida
 const cuantosCorazonesHeroe = () => {
     if (corazones == 0) {
-        document.querySelector("#vidaContinuarH").innerHTML = `rep = <img src="./img/vidaCero.svg" alt="">`
+        document.querySelector("#vidaContinuarH").innerHTML = `rep = <img class="landscape" src="./img/vidaCero.svg" alt="">`
     } else if (corazones == 1) {
-        document.querySelector("#vidaContinuarH").innerHTML = `rep = <img src="./img/vidaUno.svg" alt="">`
+        document.querySelector("#vidaContinuarH").innerHTML = `rep = <img class="landscape" src="./img/vidaUno.svg" alt="">`
     } else if (corazones == 2) {
-        document.querySelector("#vidaContinuarH").innerHTML = `rep = <img src="./img/vidaDos.svg" alt="">`
+        document.querySelector("#vidaContinuarH").innerHTML = `rep = <img class="landscape" src="./img/vidaDos.svg" alt="">`
     } else {
-        document.querySelector("#vidaContinuarH").innerHTML = `rep = <img src="./img/vidaTres.svg" alt="">`
+        document.querySelector("#vidaContinuarH").innerHTML = `rep = <img class="landscape" src="./img/vidaTres.svg" alt="">`
     }
 }
 
@@ -405,7 +406,7 @@ const arrancaJuego = () => {
                             </div>
                             <div class="col-6">
                                 <div class="container text-center">
-                                    <div class="row contenedorAcciones d-flex align-content-around" id="barraAcciones">
+                                    <div class="row contenedorAcciones" id="barraAcciones">
                                         <div class="col-4">
                                             <img class="btnAcciones" src="./img/btnAtaque.svg" alt="Boton de ataque" id="atacar">
                                         </div>
@@ -652,7 +653,7 @@ const btnOpcion = () => {
     document.querySelector("#barraAcciones").innerHTML = 
     `
     <div class="container text-center">
-        <div class="row contenedorAcciones d-flex align-content-around">
+        <div class="row contenedorAcciones">
             <div class="col-4">
                 <img class="btnAcciones" src="./img/btnMusicaOn.svg" alt="Boton para musica" id="musicaOn">
             </div>
@@ -713,7 +714,7 @@ const btnCofre = () => {
     document.querySelector("#barraAcciones").innerHTML = 
     `
     <div class="container text-center">
-        <div class="row contenedorAcciones d-flex align-content-around">
+        <div class="row contenedorAcciones">
             <div class="col-4 ">
                 <img class="btnAcciones" alt="Boton para mas vida" id="masVida">
             </div>
@@ -848,16 +849,16 @@ const verificarVida = () => {
     }else if (personajes[1].vida <= 0 && enfrentamiento == 0) {
         golpeCriticoV = 0
         personajes.splice(1)
-        mostrarEnemigo();
+        setTimeout(mostrarEnemigo, 500)
         enfrentamiento = 1
     } else if (personajes[1].vida <= 0 && enfrentamiento == 1) {
         golpeCriticoV = 0
         personajes.splice(1)
-        mostrarBoss();
+        setTimeout(mostrarBoss, 500)
         enfrentamiento = 2
     }
     else if (personajes[1].vida <= 0 && enfrentamiento == 2) {
-        victoriaHeroe();
+        setTimeout(victoriaHeroe, 500)
     }
 }
 
@@ -871,7 +872,7 @@ const verificarCorazones = () => {
         arrancaJuego();
         document.querySelector("#movimientoH").innerHTML = `Has utilizado una vida para continuar con la batalla`
     } else {
-        derrotaHeroe();
+        setTimeout(derrotaHeroe, 500)
     }
 }
 
@@ -886,7 +887,7 @@ const victoriaHeroe = () => {
         <div class="container text-center">
             <div class="row contenedorPrimero">
                 <div class="col-12">
-                    <h2 class="mensajeEleccion">HAS SALIDO VICTORIOSO DEL ENFRENTAMIENTO</h2>
+                    <h2 class="tamañoFuenteH2 mensajeEleccion">HAS SALIDO VICTORIOSO DEL ENFRENTAMIENTO</h2>
                 </div>
                 <div class="col-12">
                     <img class="movimientoVictoria" src="./img/victoria.png" alt="Logo de victoria">
@@ -924,7 +925,7 @@ const derrotaHeroe = () => {
         <div class="container text-center">
             <div class="row contenedorPrimero">
                 <div class="col-12">
-                    <h2 class="mensajeEleccion">HAS SUFRIDO UNA DERROTA ABISMAL</h2>
+                    <h2 class="tamañoFuenteH2 mensajeEleccion">HAS SUFRIDO UNA DERROTA ABISMAL</h2>
                 </div>
                 <div class="col-12">
                     <img class="movimientoDerrota" src="./img/derrota.png" alt="Logo de derrota">

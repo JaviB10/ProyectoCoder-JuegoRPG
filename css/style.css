@@ -108,12 +108,15 @@ h2, p{
 }
 .contenedorAcciones {
     height: 200px;
+    display: flex;
+    align-content: space-around;
 }
 .btnAcciones {
     width: 100%;
     height: 75px;
     cursor: pointer;
 }
+
 /* Estilos para la pagina de victoria*/
 .bannerVictoria {
     width: 100vw; 
@@ -137,209 +140,139 @@ h2, p{
     animation: rotateOutDownLeft 2s;
 }
 
-
-.datos{
-    
-    height: 100%;
-}
-.bannerPersonajes {
-    
-    background-image: url(../img/bannerPersonajes.jpg);
-    position: relative;
-    top: 200px;
-    border-radius: 20;
-}
-.imgGuerrero {
-    width: 600px;
-    height: 600px;
-}
-
-
-.btnEleccion {
-    width: 250px;
-    height: 60px;
-    cursor: pointer;
-    position: relative;
-    top: 50px;
-    right: 120px;
-}
-
-
-
-
-
-
-
-
-.dragonJuego {
-    width: 250px;
-    height: 280px;
-    position: relative;
-    top: 10px;
-}
-
-
-
-.btnHabilidadRojo {
-    background-color: grey;
-}
-.btnHabilidadVerde {
-    background-color: green;
-}
-
-
-
-
-.colorBtn {
-    background-color: black;
-    border-radius: 100px;
-}
-
-
-.btnContinuarJugar {
-    width: 250px;
-    height: 60px;
-    cursor: pointer;
-    position: relative;
-    right: 10px
-}
-
-.medidaDivEnemigo {
-    height: 100vh;
-}
-
-.cambio {
-    display: none;
-}
-
-
-.personajesMago {
-    width: 500px;
-    height: 500px;
-    position: relative;
-    right: 250px;
-}
-.personajesArquero {
-    width: 500px;
-    height: 500px;
-    position: relative;
-    right: 310px;
-}
-
-.enemigo {
-    width: 500px;
-    height: 500px;
-}
-
-.displayHader {
-    display: none;
-}
-
-.carousel {
-    
-    height: 90%;
-}
-
-
-
-
-
-.contenedorJuego {
-    width: 100vw;
-    height: 100vh;
-    
-    
-    
+@media only screen and (max-width: 599px) {
+    .tamañoFuenteH2 {
+        font-size: 10px;
+    }
+    p{
+        font-size: 8px;
+    }
+    .logoCarrusel {
+        width: 100%;
+        height: 100%;
+        animation: rollIn 2s;
+    }
+    .personajesGuerrero {
+        width: 100%;
+        height: 95%;
+    }
+    .personajesMonstruo {
+        width: 100%;
+        height: 95%;
+    }
+    .bannerDatosPersonajes{
+        width: 150px;
+        background-image: url(../img/bannerDatosPersonajes.jpg);
+        border-radius: 20px;
+        opacity: 0.8;
+    }
+    .jugadorHeroe {
+        width: 70%;
+        height: 100%;
+    }
+    .contenedorAcciones {
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+        align-content: flex-start;
+    }
+    .btnAcciones {
+        width: 100px;
+        height: 40px;
+        cursor: pointer;
+    }
+    .movimientoVictoria {
+        width: 200px;
+    }
+    .movimientoDerrota {
+        width: 200px;
+    }
+    .landscape{
+        height: 10px;
+    }
     
 }
-
-.barraEnemigo {
-    width: 440px;
-    height: 100px;
-    background-color: black;
-    border-radius: 20px;
-    display: grid;
-    grid-gap: 2px;
+@media only screen and (min-width: 500px) and (max-width: 739px) and (orientation: landscape) {
+    .tamañoFuenteH2 {
+        font-size: 10px;
+    }
+    p{
+        font-size: 8px;
+    }
+    .logoCarrusel {
+        display: none;
+    }
+    .personajesGuerrero {
+        width: 85%;
+        height: 90%;
+    }
+    .personajesMonstruo {
+        width: 85%;
+        height: 90%;
+    }
+    .jugadorHeroe {
+        width: 60px;
+    }
+    .bannerDatosPersonajes{
+        width: 200px;
+    }
+    .contenedorAcciones {
+        height: 100px;
+        display: flex;
+        flex-direction: column;
+        align-content: flex-start;
+    }
+    .btnAcciones {
+        width: 70px;
+        height: 50px;
+        cursor: pointer;
+    }
+    .landscape{
+        height: 10px;
+    }
 }
-.barraNombreEnemigo{
-    width: 90%;
-    height: 30px;
-    background-color: white;
-    border-radius: 20px;
-    position: relative;
-    top: 15px;
-    left: 15px;
-}
-.barraVidaEnemigo{
-    width: 90%;
-    height: 30px;
-    background-color: white;
-    border-radius: 20px;
-    position: relative;
-    left: 15px;
-}
-
-.barraHeroe {
-    width: 440px;
-    height: 100px;
-    background-color: black;
-    border-radius: 20px;
-    display: grid;
-    grid-gap: 2px;
-
-}
-.barraNombreHeroe {
-    width: 90%;
-    height: 30px;
-    background-color: white;
-    position: relative;
-    top: 15px;
-    left: 15px;
-}
-.barraVidaHeroe {
-    width: 90%;
-    height: 30px;
-    background-color: white;
-    
-    position: relative;
-    left: 15px;
-}
-
-
-
-
-.barraAcciones {
-    width: 45%;
-    
-    border-radius: 20px;
-}
-
-
-.btnAccionesItems {
-    width: 200px;
-    height: 75px;
-    cursor: pointer;
-}
-
-
-.nombreHeroe {
-    position: relative;
-    bottom: 5px;
-}
-
-
-
-/*
-
-
-
-.flex {
-    display: flex;
-}
-
-.eleccion {
-    display: flex;
-    justify-content: center;
+@media only screen and (min-width: 740px) and (max-width: 990px) and (orientation: landscape) {
+    .tamañoFuenteH2 {
+        font-size: 12px;
+    }
+    p{
+        font-size: 10px;
+    }
+    .logoCarrusel {
+        display: none;
+    }
+    .personajesGuerrero {
+        width: 80%;
+        height: 90%;
+    }
+    .personajesMonstruo {
+        width: 80%;
+        height: 90%;
+    }
+    .jugadorHeroe {
+        width: 60px;
+    }
+    .bannerDatosPersonajes{
+        width: 300px;
+    }
+    .contenedorAcciones {
+        height: 100px;
+    }
+    .btnAcciones {
+        width: 100px;
+        height: 50px;
+        cursor: pointer;
+    }
+    .landscape{
+        height: 10px;
+    }
+    .movimientoVictoria {
+        width: 200px;
+        height: 200px;
+    }
+    .movimientoDerrota {
+        width: 200px;
+        height: 200px;
+    }
 }
 
-*/
