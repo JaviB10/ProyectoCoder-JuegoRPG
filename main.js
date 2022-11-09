@@ -31,7 +31,7 @@ const elegirMonstruo =  () => {
             // ==> Ataque: 1min hasta 9max
             // ==> Defensa: 1min hasta 5max
             // ==> Habilidad (Mordida Profunda): 20min hasta 50max
-            personajes.push (new Personaje ("WARRIOR WOLF", 100, 170, 0, 1, 9, 1, 5, 20, 50, "Clase de villano muy rapido en ataques, pero con una defensa normal.", "./img/warriorWolfJuego.svg"));
+            personajes.push (new Personaje ("WARRIOR WOLF", 100, 170, 0, 1, 9, 1, 5, 20, 50, "Clase de villano muy rapido en ataques, pero con una defensa normal.", "./assets/img/personajes/warriorWolfJuego.png"));
             personajes[1].vida = vidaAdquiridaM();
             break;
         case 2:
@@ -40,7 +40,7 @@ const elegirMonstruo =  () => {
             // ==> Ataque: 1min hasta 17max
             // ==> Defensa: 1min hasta 5max
             // ==> Habilidad (Embestida): 40min hasta 70max
-            personajes.push (new Personaje ("ZOMBIE ORC", 100, 210, 0, 1, 17, 1, 5, 40, 70, "Clase de villano con un ataque muy poderoso, pero con una defensa fragil.", "./img/zombieOrcJuego.svg"));
+            personajes.push (new Personaje ("ZOMBIE ORC", 100, 210, 0, 1, 17, 1, 5, 40, 70, "Clase de villano con un ataque muy poderoso, pero con una defensa fragil.", "./assets/img/personajes/zombieOrcJuego.png"));
             personajes[1].vida = vidaAdquiridaM();
             break;
         case 3:
@@ -49,7 +49,7 @@ const elegirMonstruo =  () => {
             // ==> Ataque: 1min hasta 8max
             // ==> Defensa: 1min hasta 25max
             // ==> Habilidad (Resurreccion de muertos): 50min hasta 80max
-            personajes.push (new Personaje ("SKELETON", 100, 180, 0, 1, 8, 1, 25, 50, 80, "Clase de villano con un ataque debil, pero con una de las mejores defensas.", "./img/skeletonJuego.svg"));
+            personajes.push (new Personaje ("SKELETON", 100, 180, 0, 1, 8, 1, 25, 50, 80, "Clase de villano con un ataque debil, pero con una de las mejores defensas.", "./assets/img/personajes/skeletonJuego.png"));
             personajes[1].vida = vidaAdquiridaM();
             break; 
     }
@@ -67,7 +67,7 @@ const elegirBoss =  () => {
             // ==> Ataque: 10min hasta 20max
             // ==> Defensa: 5min hasta 10max
             // ==> Habilidad (BOLAS DE FUEGO): 60min hasta 90max
-            personajes.push (new Personaje ("DRAGON", 150, 250, 0, 10, 20, 5, 10, 60, 90, "", "./img/dragonJuego.svg"));
+            personajes.push (new Personaje ("CANNIBAL", 150, 250, 0, 10, 20, 5, 10, 60, 90, "", "./assets/img/personajes/cannibalJuego.png"));
             personajes[1].vida = vidaAdquiridaM();
             break;
         case 2:
@@ -76,7 +76,7 @@ const elegirBoss =  () => {
             // ==> Ataque: 10min hasta 18max
             // ==> Defensa: 5min hasta 10max
             // ==> Habilidad (HIPNOSIS): 60min hasta 90max
-            personajes.push (new Personaje ("DRACULA", 150, 220, 0, 10, 18, 5, 10, 60, 90, "", "./img/draculaJuego.svg"));
+            personajes.push (new Personaje ("ALUCARD", 150, 220, 0, 10, 18, 5, 10, 60, 90, "", "./assets/img/personajes/alucardJuego.png"));
             personajes[1].vida = vidaAdquiridaM();
             break;
         case 3:
@@ -85,7 +85,7 @@ const elegirBoss =  () => {
             // ==> Ataque: 10min hasta 15max
             // ==> Defensa: 7min hasta 15max
             // ==> Habilidad (PURGATORIO): 60min hasta 90max
-            personajes.push (new Personaje ("DEMONS", 150, 240, 0, 10, 15, 7, 15, 60, 90, "", "./img/demonsJuego.svg"));
+            personajes.push (new Personaje ("ASTAROTH and BELFEGOR", 150, 240, 0, 10, 15, 7, 15, 60, 90, "", "./assets/img/personajes/demonsJuego.png"));
             personajes[1].vida = vidaAdquiridaM();
             break;   
     }
@@ -122,12 +122,56 @@ const queHaraMonstruo = () => {
         console.log (decisionV)
     }
 }
-
-
+const obtenerApiLocalKnight = () => {
+    fetch("data/data.json")
+        .then((respuesta) => {
+            return respuesta.json()
+        })
+        .then((datos) => {
+            const knightJson = datos.find(element => element.id == 1);
+            personajes.push(knightJson);
+            personajes[0].vida = vidaAdquiridaH();
+            mostrarEnemigo();
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+}
+const obtenerApiLocalWizard = () => {
+    fetch("data/data.json")
+        .then((respuesta) => {
+            return respuesta.json()
+        })
+        .then((datos) => {
+            const wizardJson = datos.find(element => element.id == 2);
+            personajes.push(wizardJson);
+            personajes[0].vida = vidaAdquiridaH();
+            mostrarEnemigo();
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+}
+const obtenerApiLocalArcher = () => {
+    fetch("data/data.json")
+        .then((respuesta) => {
+            return respuesta.json()
+        })
+        .then((datos) => {
+            const archerJson = datos.find(element => element.id == 3);
+            personajes.push(archerJson);
+            personajes[0].vida = vidaAdquiridaH();
+            mostrarEnemigo();
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+}
+const id = 0
 //Funcion encargada de mostrar los personajes (Heroes), los cuales el usuario podra seleccionar para jugar, los mismo se crearan y se guardaran dentro de un array
 const elegirHeroe = () => {
     const cambioMusica = document.querySelector("#musicaJuego")
-    cambioMusica.innerHTML = `<audio src="./musica/soundtrackEleccion.mp3" autoplay="autoplay" loop="loop"></audio>`
+    cambioMusica.innerHTML = `<audio src="./assets/musica/soundtrackEleccion.mp3" autoplay="autoplay" loop="loop"></audio>`
     const seccionHereoEleccion = document.getElementById("nuevoElemento")
     seccionHereoEleccion.innerHTML = 
     `   
@@ -149,10 +193,10 @@ const elegirHeroe = () => {
                                 <div class="container text-center">
                                     <div class="row">
                                         <div class="col-12">
-                                            <img src="./img/knight.png" class="personajesGuerrero rounded-5" alt="Guerrero">
+                                            <img src="./assets/img/personajes/knight.jpg" class="personajesGuerrero rounded-5" alt="Guerrero">
                                         </div>
                                         <div class="col-12">
-                                            <img class="btnEleccionPersonaje" src="./img/btnKnight.svg" alt="Boton de eleccion" id="knight">
+                                            <img class="btnEleccionPersonaje" src="./assets/img/btns/btnKnight.png" alt="Boton de eleccion" id="knight">
                                         </div>
                                     </div>
                                 </div>
@@ -162,10 +206,10 @@ const elegirHeroe = () => {
                                 <div class="container text-center">
                                     <div class="row">
                                         <div class="col-12">
-                                            <img src="./img/wizard.png" class="personajesGuerrero rounded-5" alt="Mago">
+                                            <img src="./assets/img/personajes/wizard.jpg" class="personajesGuerrero rounded-5" alt="Mago">
                                         </div>
                                         <div class="col-12">
-                                            <img class="btnEleccionPersonaje" src="./img/btnWizard.svg" alt="Boton de eleccion" id="wizard">
+                                            <img class="btnEleccionPersonaje" src="./assets/img/btns/btnWizard.png" alt="Boton de eleccion" id="wizard">
                                         </div>
                                     </div>
                                 </div>
@@ -174,10 +218,10 @@ const elegirHeroe = () => {
                                 <div class="container text-center">
                                     <div class="row">
                                         <div class="col-12">
-                                            <img src="./img/archer.png" class="personajesGuerrero rounded-5" alt="Arquero">
+                                            <img src="./assets/img/personajes/archer.jpg" class="personajesGuerrero rounded-5" alt="Arquero">
                                         </div>
                                         <div class="col-12">
-                                            <img class="btnEleccionPersonaje" src="./img/btnArcher.svg" alt="Boton de eleccion" id="archer">
+                                            <img class="btnEleccionPersonaje" src="./assets/img/btns/btnArcher.png" alt="Boton de eleccion" id="archer">
                                         </div>
                                     </div>
                                 </div>
@@ -198,45 +242,21 @@ const elegirHeroe = () => {
     </main>
     `
     //Dependiendo de la eleccion del usuario se crea el objeto deseado (Guerrero - Mago - Arquero). El mismo se guarda en un array.
-    let eleccionG = document.getElementById ("knight")
+    let eleccionG = document.querySelector ("#knight")
     eleccionG.onclick = () => {
-        //Guerrero: Puede tener los siguientes valores 
-        // ==> Vida: 100min hasta 200max
-        // ==> Ataque: 1min hasta 10max
-        // ==> Defensa: 1min hasta 15max
-        // ==> Habilidad (Golpe Martillo): 30min hasta 60max
-        personajes.push (new Personaje ("KNIGHT", 100, 200, 0, 1, 10, 1, 15, 30, 60, "Clase de personaje cuya mayor habilidad o principal función es el ataque a corta distancia o cuerpo a cuerpo.", "./img/knightJuego.svg"));
-        personajes[0].vida = vidaAdquiridaH();
-        localStorage.setItem ("Heroe", JSON.stringify(personajes[0]));
-        mostrarEnemigo();
+        obtenerApiLocalKnight();
     }
-    let eleccionM = document.getElementById ("wizard")    
+    let eleccionM = document.querySelector ("#wizard")    
     eleccionM.onclick = () => { 
-        //Mago: Puede tener los siguientes valores 
-        // ==> Vida: 100min hasta 180max
-        // ==> Ataque: 1min hasta 15max
-        // ==> Defensa: 1min hasta 20max
-        // ==> Habilidad (Golpe Estelar): 30min hasta 60max
-        personajes.push (new Personaje ("WIZARD", 100, 180, 0, 1, 15, 1, 20, 30, 60, "Clase de personaje con una defensa debil pero cuya habilidad magica le da un ataque superior al resto.", "./img/wizardJuego.svg"));
-        personajes[0].vida = vidaAdquiridaH();
-        localStorage.setItem ("Heroe", JSON.stringify(personajes[0]));
-        mostrarEnemigo();
+        obtenerApiLocalWizard();
     }
-    let eleccionA = document.getElementById ("archer")    
+    let eleccionA = document.querySelector ("#archer")    
     eleccionA.onclick = () => { 
-        //Arquero: Puede tener los siguientes valores 
-        // ==> Vida: 100min hasta 190max
-        // ==> Ataque: 1min hasta 12max
-        // ==> Defensa: 1min hasta 20max
-        // ==> Habilidad (Lluvia de flechas): 30min hasta 60max
-        personajes.push (new Personaje ("ARCHER", 100, 190, 0, 1, 12, 1, 20, 30, 60, "Clase de personaje que efectua ataques a distancia con poco poder pero cuenta con una defensa aceptable.", "./img/archerJuego.svg"));
-        personajes[0].vida = vidaAdquiridaH();
-        localStorage.setItem ("Heroe", JSON.stringify(personajes[0]));
-        mostrarEnemigo();
+        obtenerApiLocalArcher();
     }
 }
 
-let oprimirJugar = document.getElementById("jugar")
+let oprimirJugar = document.querySelector("#jugar")
 oprimirJugar.onclick = () => {
     setTimeout(elegirHeroe, 200);
 }
@@ -245,8 +265,8 @@ oprimirJugar.onclick = () => {
 const mostrarEnemigo = () => {
     elegirMonstruo();
     const cambioMusica = document.querySelector("#musicaJuego")
-    cambioMusica.innerHTML = `<audio src="./musica/soundtrackBatalla.mp3" autoplay="autoplay" loop="loop"></audio>`
-    const seccionMonstruoEleccion = document.getElementById("nuevoElemento")
+    cambioMusica.innerHTML = `<audio src="./assets/musica/soundtrackBatalla.mp3" autoplay="autoplay" loop="loop"></audio>`
+    const seccionMonstruoEleccion = document.querySelector("#nuevoElemento")
     seccionMonstruoEleccion.innerHTML = 
     `
     <main class="bannerEleccion">
@@ -259,18 +279,19 @@ const mostrarEnemigo = () => {
                     <img class="personajesMonstruo rounded-5" alt="Villano" id="villano">
                 </div>
                 <div class="col-12">
-                    <img class="btnIrBatalla" src="./img/btnStartBattle.svg" alt="Boton de comienzo" id="comenzarJuego">
+                    <img class="btnIrBatalla" src="./assets/img/btns/btnStartBattle.png" alt="Boton de comienzo" id="comenzarJuego">
                 </div>
             </div>
         </div>
     </main>
     `
+    document.querySelector("#nuevoElemento").classList.remove("bannerPrincipal")
     if (eleccionV == 1){
-        document.querySelector("#villano").setAttribute('src', "./img/warriorWolf.jpg")
+        document.querySelector("#villano").setAttribute('src', "./assets/img/personajes/warriorWolf.jpg")
     } else if (eleccionV == 2) {
-        document.querySelector("#villano").setAttribute('src', "./img/zombieOrc.jpg")
+        document.querySelector("#villano").setAttribute('src', "./assets/img/personajes/zombieOrc.jpg")
     } else {
-        document.querySelector("#villano").setAttribute('src', "./img/skeleton.jpg")
+        document.querySelector("#villano").setAttribute('src', "./assets/img/personajes/skeleton.jpg")
     }
     document.querySelector("#comenzarJuego").onclick = () => {
         setTimeout(arrancaJuego, 200);
@@ -293,19 +314,19 @@ const mostrarBoss = () => {
                     <img class="personajesMonstruo rounded-5" alt="Villano" id="villano">
                 </div>
                 <div class="col-12">
-                    <img class="btnIrBatalla" src="./img/btnStartBattle.svg" alt="Boton de comienzo" id="comenzarJuego">
+                    <img class="btnIrBatalla" src="./assets/img/btns/btnStartBattle.png" alt="Boton de comienzo" id="comenzarJuego">
                 </div>
             </div>
         </div>
     </main>
     `
     if (eleccionB == 1){
-        document.querySelector("#villano").setAttribute('src', "./img/dragon.jpg")
+        document.querySelector("#villano").setAttribute('src', "./assets/img/personajes/cannibal.jpg")
         
     } else if (eleccionB == 2) {
-        document.querySelector("#villano").setAttribute('src', "./img/dracula.jpg")
+        document.querySelector("#villano").setAttribute('src', "./assets/img/personajes/alucard.jpg")
     } else {
-        document.querySelector("#villano").setAttribute('src', "./img/demons.jpg")
+        document.querySelector("#villano").setAttribute('src', "./assets/img/personajes/demons.jpg")
     }
     document.querySelector("#comenzarJuego").onclick = () => {
         setTimeout(arrancaJuego, 200);
@@ -314,11 +335,11 @@ const mostrarBoss = () => {
 
 const habilitarHabilidad = () => {
     if (golpeCriticoH == 3) {
-        document.querySelector("#habilidad").setAttribute('src',"./img/btnHabilidad.svg")
+        document.querySelector("#habilidad").setAttribute('src',"./assets/img/btns/btnSkill.png")
     }
 }
 const deshabilitarHabilidad = () => {
-    document.querySelector("#habilidad").setAttribute('src',"./img/btnHabilidadNula.svg")
+    document.querySelector("#habilidad").setAttribute('src',"./assets/img/btns/btnSkillNula.png")
 }
 
 //Funcion encargada de calcular el golpe de habildiad del monstruo, boss
@@ -332,37 +353,37 @@ const habilidadGolpeEnemigo = () => {
 //Funcion encargada de mostrar los puntos de habilidad de los personajes (hereos, monstruos y boss)
 const cuantaHabilidadHeroe = () => {
     if (golpeCriticoH == 0) {
-        document.querySelector("#habilidadH").innerHTML = `hab = <img class="landscape" src="./img/puntosHabilidadCero.svg" alt="">`
+        document.querySelector("#habilidadH").innerHTML = `<img class="landscape" src="./assets/img/skillPointCero.png" alt="">`
     } else if (golpeCriticoH == 1) {
-        document.querySelector("#habilidadH").innerHTML = `hab = <img class="landscape" src="./img/puntosHabilidadUno.svg" alt="">`
+        document.querySelector("#habilidadH").innerHTML = `<img class="landscape" src="./assets/img/skillPointOne.png" alt="">`
     } else if (golpeCriticoH == 2) {
-        document.querySelector("#habilidadH").innerHTML = `hab = <img class="landscape" src="./img/puntosHabilidadDos.svg" alt="">`
+        document.querySelector("#habilidadH").innerHTML = `<img class="landscape" src="./assets/img/skillPointTwo.png" alt="">`
     } else {
-        document.querySelector("#habilidadH").innerHTML = `hab = <img class="landscape" src="./img/puntosHabilidadTres.svg" alt="">`
+        document.querySelector("#habilidadH").innerHTML = `<img class="landscape" src="./assets/img/skillPointThree.png" alt="">`
     }
 }
 const cuantaHabilidadMonstruo = () => {
     if (golpeCriticoV == 0) {
-        document.querySelector("#habilidadM").innerHTML = `hab = <img class="landscape" src="./img/puntosHabilidadCero.svg" alt="">`
+        document.querySelector("#habilidadM").innerHTML = `<img class="landscape" src="./assets/img/skillPointCero.png" alt="">`
     } else if (golpeCriticoV == 1) {
-        document.querySelector("#habilidadM").innerHTML = `hab = <img class="landscape" src="./img/puntosHabilidadUno.svg" alt="">`
+        document.querySelector("#habilidadM").innerHTML = `<img class="landscape" src="./assets/img/skillPointOne.png" alt="">`
     } else if (golpeCriticoV == 2) {
-        document.querySelector("#habilidadM").innerHTML = `hab = <img class="landscape" src="./img/puntosHabilidadDos.svg" alt="">`
+        document.querySelector("#habilidadM").innerHTML = `<img class="landscape" src="./assets/img/skillPointTwo.png" alt="">`
     } else {
-        document.querySelector("#habilidadM").innerHTML = `hab = <img class="landscape" src="./img/puntosHabilidadTres.svg" alt="">`
+        document.querySelector("#habilidadM").innerHTML = `<img class="landscape" src="./assets/img/skillPointThree.png" alt="">`
     }
 }
 
 //Funcion encargada de mostrar los corazones que le quedan al heroe para utilizar en caso de querer continuar la partida
 const cuantosCorazonesHeroe = () => {
     if (corazones == 0) {
-        document.querySelector("#vidaContinuarH").innerHTML = `rep = <img class="landscape" src="./img/vidaCero.svg" alt="">`
+        document.querySelector("#vidaContinuarH").innerHTML = `<img class="landscape" src="./assets/img/heartCero.png" alt="">`
     } else if (corazones == 1) {
-        document.querySelector("#vidaContinuarH").innerHTML = `rep = <img class="landscape" src="./img/vidaUno.svg" alt="">`
+        document.querySelector("#vidaContinuarH").innerHTML = `<img class="landscape" src="./assets/img/heartOne.png" alt="">`
     } else if (corazones == 2) {
-        document.querySelector("#vidaContinuarH").innerHTML = `rep = <img class="landscape" src="./img/vidaDos.svg" alt="">`
+        document.querySelector("#vidaContinuarH").innerHTML = `<img class="landscape" src="./assets/img/heartTwo.png" alt="">`
     } else {
-        document.querySelector("#vidaContinuarH").innerHTML = `rep = <img class="landscape" src="./img/vidaTres.svg" alt="">`
+        document.querySelector("#vidaContinuarH").innerHTML = `<img class="landscape" src="./assets/img/heartThree.png" alt="">`
     }
 }
 
@@ -374,19 +395,19 @@ const arrancaJuego = () => {
     <main class="bannerBatalla">
         <div class="container-fluid text-center">
             <div class="row contenedorTercero">
-                <div class="col-6 bannerDatosPersonajes text-center">
-                    <h2 class="tamañoFuenteH2"> Class = ${personajes[0].clase}</h2>
-                    <h2 class="tamañoFuenteH2" id="vidaH">HP = ${personajes[0].vida}</h2>
-                    <h2 class="tamañoFuenteH2" id="atkH"> atk = ${personajes[0].ataqueMin}min a ${personajes[0].ataqueMax}max</h2>
-                    <h2 class="tamañoFuenteH2" id="defH"> def = ${personajes[0].defensaMin}min a ${personajes[0].defensaMax}max</h2>
+                <div class="col-6 bannerDatosPersonajes text-start">
+                    <h2 class="tamañoFuenteH2"> <img class="icons" src="./assets/img/class.png" alt=""> ${personajes[0].clase}</h2>
+                    <h2 class="tamañoFuenteH2" id="vidaH"> <img class="icons" src="./assets/img/hp.png" alt=""> ${personajes[0].vida}</h2>   
+                    <h2 class="tamañoFuenteH2" id="atkH"> <img class="icons" src="./assets/img/atk.png" alt=""> ${personajes[0].ataqueMin}min a ${personajes[0].ataqueMax}max</h2>
+                    <h2 class="tamañoFuenteH2" id="defH"> <img class="icons" src="./assets/img/def.png" alt=""> ${personajes[0].defensaMin}min a ${personajes[0].defensaMax}max</h2>      
                     <h2 class="tamañoFuenteH2" id="habilidadH"> </h2>
                     <h2 class="tamañoFuenteH2" id="vidaContinuarH"> </h2>
                 </div>
-                <div class="col-6 bannerDatosPersonajes text-center">
-                    <h2 class="tamañoFuenteH2"> Class: ${personajes[1].clase}</h2>
-                    <h2 class="tamañoFuenteH2" id="vidaM">HP: ${personajes[1].vida}</h2>
-                    <h2 class="tamañoFuenteH2"> atk: ${personajes[1].ataqueMin}min a ${personajes[1].ataqueMax}max</h2>
-                    <h2 class="tamañoFuenteH2"> def: ${personajes[1].defensaMin}min a ${personajes[1].defensaMax}max</h2>
+                <div class="col-6 bannerDatosPersonajes text-start">
+                    <h2 class="tamañoFuenteH2"> <img class="icons" src="./assets/img/class.png" alt=""> ${personajes[1].clase}</h2>
+                    <h2 class="tamañoFuenteH2" id="vidaM"> <img class="icons" src="./assets/img/hp.png" alt=""> ${personajes[1].vida}</h2>
+                    <h2 class="tamañoFuenteH2"> <img class="icons" src="./assets/img/atk.png" alt=""> ${personajes[1].ataqueMin}min a ${personajes[1].ataqueMax}max</h2>
+                    <h2 class="tamañoFuenteH2"> <img class="icons" src="./assets/img/def.png" alt=""> ${personajes[1].defensaMin}min a ${personajes[1].defensaMax}max</h2>
                     <h2 class="tamañoFuenteH2" id="habilidadM"> </h2>
                 </div>
                 <div class="col-6">
@@ -408,19 +429,19 @@ const arrancaJuego = () => {
                                 <div class="container text-center">
                                     <div class="row contenedorAcciones" id="barraAcciones">
                                         <div class="col-4">
-                                            <img class="btnAcciones" src="./img/btnAtaque.svg" alt="Boton de ataque" id="atacar">
+                                            <img class="btnAcciones" src="./assets/img/btns/btnAtk.png" alt="Boton de ataque" id="atacar">
                                         </div>
                                         <div class="col-4">
-                                            <img class="btnAcciones" src="./img/btnDefensa.svg" alt="Boton de defensa" id="defender">
+                                            <img class="btnAcciones" src="./assets/img/btns/btnDef.png" alt="Boton de defensa" id="defender">
                                         </div>
                                         <div class="col-4" id="btnHabilidad">
                                             
                                         </div>
                                         <div class="col-4">
-                                            <img class="btnAcciones" src="./img/btnCofre.svg" alt="Boton de items" id="mochila">
+                                            <img class="btnAcciones" src="./assets/img/btns/btnChest.png" alt="Boton de items" id="mochila">
                                         </div>
                                         <div class="col-4">
-                                            <img class="btnAcciones" src="./img/btnOpciones.svg" alt="Boton de opciones" id="opcion">
+                                            <img class="btnAcciones" src="./assets/img/btns/btnOptions.png" alt="Boton de opciones" id="opcion">
                                         </div>
                                     </div>
                                 </div>
@@ -436,16 +457,16 @@ const arrancaJuego = () => {
     `
     document.querySelector("main").classList.remove("bannerPrincipal")
     if (golpeCriticoH < 3) {
-        document.querySelector("#btnHabilidad").innerHTML = `<img class="btnAcciones" src="./img/btnHabilidadNula.svg" alt="Boton de habilidad" id="habilidad">`
+        document.querySelector("#btnHabilidad").innerHTML = `<img class="btnAcciones" src="./assets/img/btns/btnSkillNula.png" alt="Boton de habilidad" id="habilidad">`
     } else {
-        document.querySelector("#btnHabilidad").innerHTML = `<img class="btnAcciones" src="./img/btnHabilidad.svg" alt="Boton de habilidad" id="habilidad">`
+        document.querySelector("#btnHabilidad").innerHTML = `<img class="btnAcciones" src="./assets/img/btns/btnSkill.png" alt="Boton de habilidad" id="habilidad">`
     }
     
     cuantosCorazonesHeroe();
     cuantaHabilidadMonstruo();
     cuantaHabilidadHeroe();
-    document.querySelector("#vidaH").innerHTML = `HP = ${personajes[0].vida}`
-    document.querySelector("#vidaM").innerHTML = `HP = ${personajes[1].vida}`
+    document.querySelector("#vidaH").innerHTML = `<img class="icons" src="./assets/img/hp.png" alt=""> ${personajes[0].vida}`
+    document.querySelector("#vidaM").innerHTML = `<img class="icons" src="./assets/img/hp.png" alt=""> ${personajes[1].vida}`
     const pulsadorAtaque = document.querySelector('#atacar');
     pulsadorAtaque.onclick = () => {
         //Movimiento de ATAQUE del Heroe
@@ -465,8 +486,8 @@ const arrancaJuego = () => {
             personajes[0].vida -= ataqueV;
 
             //Vitalidad de los personajes
-            document.querySelector("#vidaH").innerHTML = `HP = ${personajes[0].vida}`
-            document.querySelector("#vidaM").innerHTML = `HP = ${personajes[1].vida}`
+            document.querySelector("#vidaH").innerHTML = `<img class="icons" src="./assets/img/hp.png" alt=""> ${personajes[0].vida}`
+            document.querySelector("#vidaM").innerHTML = `<img class="icons" src="./assets/img/hp.png" alt=""> ${personajes[1].vida}`
 
             //Contador de golpes para activar habilidad
             golpeCriticoH += 1
@@ -483,7 +504,7 @@ const arrancaJuego = () => {
                 ataqueH -= defensaV
                 personajes[1].vida -= ataqueH;
                 //Vitalidad de los personajes
-                document.querySelector("#vidaM").innerHTML = `HP = ${personajes[1].vida}`
+                document.querySelector("#vidaM").innerHTML = `<img class="icons" src="./assets/img/hp.png" alt=""> ${personajes[1].vida}`
                 //Contador de golpes para activar habilidad
                 golpeCriticoH += 1 
             
@@ -501,8 +522,8 @@ const arrancaJuego = () => {
             personajes[0].vida -= habilidadV;
 
             //Vitalidad de los personajes
-            document.querySelector("#vidaH").innerHTML = `HP = ${personajes[0].vida}`
-            document.querySelector("#vidaM").innerHTML = `HP = ${personajes[1].vida}`
+            document.querySelector("#vidaH").innerHTML = `<img class="icons" src="./assets/img/hp.png" alt=""> ${personajes[0].vida}`
+            document.querySelector("#vidaM").innerHTML = `<img class="icons" src="./assets/img/hp.png" alt=""> ${personajes[1].vida}`
             //Contador de golpes para activar habilidad
             golpeCriticoH += 1
         }
@@ -533,8 +554,8 @@ const arrancaJuego = () => {
                 personajes[0].vida -= ataqueV;
 
                 //Vitalidad de los personajes
-                document.querySelector("#vidaH").innerHTML = `HP = ${personajes[0].vida}`
-                document.querySelector("#vidaM").innerHTML = `HP = ${personajes[1].vida}`
+                document.querySelector("#vidaH").innerHTML = `<img class="icons" src="./assets/img/hp.png" alt=""> ${personajes[0].vida}`
+                document.querySelector("#vidaM").innerHTML = `<img class="icons" src="./assets/img/hp.png" alt=""> ${personajes[1].vida}`
                 //Contador de golpes para activar habilidad
                 golpeCriticoV += 1
 
@@ -558,7 +579,7 @@ const arrancaJuego = () => {
                 habilidadV -= defensaH
                 personajes[0].vida -= habilidadV;
                 //Vitalidad de los personajes
-                document.querySelector("#vidaH").innerHTML = `HP = ${personajes[0].vida}`
+                document.querySelector("#vidaH").innerHTML = `<img class="icons" src="./assets/img/hp.png" alt=""> ${personajes[0].vida}`
                 
             } else {
                 Swal.fire('Tu defensa supero el poder de tu enemigo. No has recibido daño')
@@ -595,8 +616,8 @@ const arrancaJuego = () => {
                 personajes[0].vida -= ataqueV;
 
                 //Vitalidad de los personajes
-                document.querySelector("#vidaH").innerHTML = `HP = ${personajes[0].vida}`
-                document.querySelector("#vidaM").innerHTML = `HP = ${personajes[1].vida}`
+                document.querySelector("#vidaH").innerHTML = `<img class="icons" src="./assets/img/hp.png" alt=""> ${personajes[0].vida}`
+                document.querySelector("#vidaM").innerHTML = `<img class="icons" src="./assets/img/hp.png" alt=""> ${personajes[1].vida}`
                 //Contador de golpes para activar habilidad
                 golpeCriticoV += 1
                 
@@ -613,7 +634,7 @@ const arrancaJuego = () => {
                     personajes[1].vida -= habilidadH;
 
                     //Vitalidad de los personajes
-                    document.querySelector("#vidaM").innerHTML = `HP = ${personajes[1].vida}`
+                    document.querySelector("#vidaM").innerHTML = `<img class="icons" src="./assets/img/hp.png" alt=""> ${personajes[1].vida}`
                     
                 } else {
                     golpeCriticoV += 1
@@ -628,8 +649,8 @@ const arrancaJuego = () => {
                 personajes[1].vida -= habilidadH;
                 personajes[0].vida -= habilidadV;
                 //Vitalidad de los personajes
-                document.querySelector("#vidaH").innerHTML = `HP = ${personajes[0].vida}`
-                document.querySelector("#vidaM").innerHTML = `HP = ${personajes[1].vida}`
+                document.querySelector("#vidaH").innerHTML = `<img class="icons" src="./assets/img/hp.png" alt=""> ${personajes[0].vida}`
+                document.querySelector("#vidaM").innerHTML = `<img class="icons" src="./assets/img/hp.png" alt=""> ${personajes[1].vida}`
                 
             }
             cuantaHabilidadHeroe();
@@ -655,19 +676,19 @@ const btnOpcion = () => {
     <div class="container text-center">
         <div class="row contenedorAcciones">
             <div class="col-4">
-                <img class="btnAcciones" src="./img/btnMusicaOn.svg" alt="Boton para musica" id="musicaOn">
+                <img class="btnAcciones" src="./assets/img/btns/btnMusicOn.png" alt="Boton para musica" id="musicaOn">
             </div>
             <div class="col-4">
-                <img class="btnAcciones" src="./img/btnMusicaOff.svg" alt="Boton para musica" id="musicaOff">
+                <img class="btnAcciones" src="./assets/img/btns/btnMusicOff.png" alt="Boton para musica" id="musicaOff">
             </div>
             <div class="col-4">
                 
             </div>
             <div class="col-4 ">
-                <img class="btnAcciones" src="./img/btnAbandonarPartida.svg" alt="Boton para abandonar" id="abandonar">
+                <img class="btnAcciones" src="./assets/img/btns/btnLeave.png" alt="Boton para abandonar" id="abandonar">
             </div>
             <div class="col-4">
-                <img class="btnAcciones" src="./img/btnVolverAcciones.svg" alt="Boton para volver" id="volverAcciones">
+                <img class="btnAcciones" src="./assets/img/btns/btnBack.png" alt="Boton para volver" id="volverAcciones">
             </div>
             
         </div>
@@ -696,7 +717,7 @@ const btnOpcion = () => {
     const reproducirMusicaOn = document.querySelector("#musicaOn")
     reproducirMusicaOn.onclick = () => {
         let musicaJuego = document.querySelector("#musicaJuego")
-        musicaJuego.innerHTML = `<audio src="./musica/soundtrackBatalla.mp3" autoplay="autoplay" loop="loop" id="musicaBatalla"></audio>` 
+        musicaJuego.innerHTML = `<audio src="./assets/musica/soundtrackBatalla.mp3" autoplay="autoplay" loop="loop" id="musicaBatalla"></audio>` 
     }
     const volverAcciones = document.querySelector("#volverAcciones")
     volverAcciones.onclick = () => {
@@ -719,49 +740,49 @@ const btnCofre = () => {
                 <img class="btnAcciones" alt="Boton para mas vida" id="masVida">
             </div>
             <div class="col-4">
-                <img class="btnAcciones" src="./img/btnMasAtaque.svg" alt="Boton para mas ataque" id="masAtaque">
+                <img class="btnAcciones" alt="Boton para mas ataque" id="masAtaque">
             </div>
             <div class="col-4">
-                <img class="btnAcciones" src="./img/btnMasDefensa.svg" alt="Boton para mas defensa" id="masDefensa">
+                <img class="btnAcciones" alt="Boton para mas defensa" id="masDefensa">
             </div>
             <div class="col-4">
-                <img class="btnAcciones" src="./img/btnMasHabilidad.svg" alt="Boton para punto de habilidad" id="puntoHabilidad">
+                <img class="btnAcciones" alt="Boton para punto de habilidad" id="puntoHabilidad">
             </div>
             <div class="col-4">
-                <img class="btnAcciones" src="./img/btnVolverAcciones.svg" alt="Boton para volver" id="volverAcciones">
+                <img class="btnAcciones" src="./assets/img/btns/btnBack.png" alt="Boton para volver" id="volverAcciones">
             </div>
         </div>
     </div>
     `
     if (puntoVida == 1) {
-        document.querySelector("#masVida").setAttribute('src', "./img/btnMasVida.svg")
+        document.querySelector("#masVida").setAttribute('src', "./assets/img/btns/btnMostHp.png")
     } else {
-        document.querySelector("#masVida").setAttribute('src', "./img/btnMasVidaNula.svg")
+        document.querySelector("#masVida").setAttribute('src', "./assets/img/btns/btnMostHpNula.png")
     }
 
     if (puntoAtaque == 1) {
-        document.querySelector("#masAtaque").setAttribute('src', "./img/btnMasAtaque.svg")
+        document.querySelector("#masAtaque").setAttribute('src', "./assets/img/btns/btnMostAtk.png")
     } else {
-        document.querySelector("#masAtaque").setAttribute('src', "./img/btnMasAtaqueNula.svg")
+        document.querySelector("#masAtaque").setAttribute('src', "./assets/img/btns/btnMostAtkNula.png")
     }
 
     if (puntoDefensa == 1) {
-        document.querySelector("#masDefensa").setAttribute('src', "./img/btnMasDefensa.svg")
+        document.querySelector("#masDefensa").setAttribute('src', "./assets/img/btns/btnMostDef.png")
     } else {
-        document.querySelector("#masDefensa").setAttribute('src', "./img/btnMasDefensaNula.svg")
+        document.querySelector("#masDefensa").setAttribute('src', "./assets/img/btns/btnMostDefNula.png")
     }
 
     if (puntoHabilidad == 1) {
-        document.querySelector("#puntoHabilidad").setAttribute('src', "./img/btnMasHabilidad.svg")
+        document.querySelector("#puntoHabilidad").setAttribute('src', "./assets/img/btns/btnMostSkill.png")
     } else {
-        document.querySelector("#puntoHabilidad").setAttribute('src', "./img/btnMasHabilidadNula.svg")
+        document.querySelector("#puntoHabilidad").setAttribute('src', "./assets/img/btns/btnMostSkillNula.png")
     }
 
     const pulsadorMasVida = document.querySelector("#masVida")
     pulsadorMasVida.onclick = () => {
         if (puntoVida == 1){
             personajes[0].vida += 50
-            document.querySelector("#vidaH").innerHTML = `HP = ${personajes[0].vida}`
+            document.querySelector("#vidaH").innerHTML = `<img class="icons" src="./assets/img/hp.png" alt=""> ${personajes[0].vida}`
             document.querySelector("#movimientoH").innerHTML = `Has utilizado una pocion para curarte`
             document.querySelector("#puntosH").innerHTML = ``
             document.querySelector("#movimientoM").innerHTML = ``
@@ -769,14 +790,14 @@ const btnCofre = () => {
             puntoVida = 0 
         }
         if (puntoVida == 0){
-            document.querySelector("#masVida").setAttribute('src', "./img/btnMasVidaNula.svg")
+            document.querySelector("#masVida").setAttribute('src', "./assets/img/btns/btnMostHpNula.png")
         }
     }
     const pulsadorMasAtaque = document.querySelector("#masAtaque")
     pulsadorMasAtaque.onclick = () => {
         if (puntoAtaque == 1){
             personajes[0].ataqueMax += 2
-            document.querySelector("#atkH").innerHTML = `atk: ${personajes[0].ataqueMin}min a ${personajes[0].ataqueMax}max`
+            document.querySelector("#atkH").innerHTML = `<img class="icons" src="./assets/img/atk.png" alt=""> ${personajes[0].ataqueMin}min a ${personajes[0].ataqueMax}max`
             document.querySelector("#movimientoH").innerHTML = `Has utilizado una pocion para aumentar tu ataque`
             document.querySelector("#puntosH").innerHTML = ``
             document.querySelector("#movimientoM").innerHTML = ``
@@ -784,14 +805,14 @@ const btnCofre = () => {
             puntoAtaque = 0
         }
         if (puntoAtaque == 0){
-            document.querySelector("#masAtaque").setAttribute('src', "./img/btnMasAtaqueNula.svg")
+            document.querySelector("#masAtaque").setAttribute('src', "./assets/img/btns/btnMostAtkNula.png")
         }
     }
     const pulsadorMasDefensa = document.querySelector("#masDefensa")
     pulsadorMasDefensa.onclick = () => {
         if (puntoDefensa >= 1){
             personajes[0].defensaMax += 2
-            document.querySelector("#defH").innerHTML = `def: ${personajes[0].defensaMin}min a ${personajes[0].defensaMax}max`
+            document.querySelector("#defH").innerHTML = `<img class="icons" src="./assets/img/def.png" alt=""> ${personajes[0].defensaMin}min a ${personajes[0].defensaMax}max`
             document.querySelector("#movimientoH").innerHTML = `Has utilizado una pocion para aumentar tu defensa`
             document.querySelector("#puntosH").innerHTML = ``
             document.querySelector("#movimientoM").innerHTML = ``
@@ -799,7 +820,7 @@ const btnCofre = () => {
             puntoDefensa = 0
         }
         if (puntoDefensa == 0){
-            document.querySelector("#masDefensa").setAttribute('src', "./img/btnMasDefensaNula.svg")
+            document.querySelector("#masDefensa").setAttribute('src', "./assets/img/btns/btnMostDefNula.png")
         }
     }
     const pulsadorMasHabilidad = document.querySelector("#puntoHabilidad")
@@ -814,7 +835,7 @@ const btnCofre = () => {
             puntoHabilidad = 0
         }
         if (puntoHabilidad == 0){
-            document.querySelector("#puntoHabilidad").setAttribute('src', "./img/btnMasHabilidadNula.svg")
+            document.querySelector("#puntoHabilidad").setAttribute('src', "./assets/img/btns/btnMostSkillNula.png")
         }
     }
     const volverAcciones = document.querySelector("#volverAcciones")
@@ -832,10 +853,10 @@ const verificarVida = () => {
         <div class="container text-center">
             <div class="row contenedorAcciones d-flex align-content-around">
                 <div class="col-12">
-                    <img class="btnAcciones" src="./img/btnContinuar.svg" alt="Boton para continuar" id="continuar">
+                    <img class="btnAccionesDos" src="./assets/img/btns/btnContinue.png" alt="Boton para continuar" id="continuar">
                 </div>
                 <div class="col-12">
-                    <img class="btnAcciones" src="./img/btnAbandonarPartida.svg" alt="Boton para abandonar" id="abandonar">
+                    <img class="btnAccionesDos" src="./assets/img/btns/btnLeave.png" alt="Boton para abandonar" id="abandonar">
                 </div>
             </div>
         </div>
@@ -867,7 +888,7 @@ let corazones = 3
 const verificarCorazones = () => {
     if (corazones > 0) {
         personajes[0].vida = vidaAdquiridaH();
-        document.querySelector("#vidaH").innerHTML = `HP = ${personajes[0].vida}`
+        document.querySelector("#vidaH").innerHTML = `<img class="icons" src="./assets/img/hp.png" alt=""> ${personajes[0].vida}`
         corazones -= 1
         arrancaJuego();
         document.querySelector("#movimientoH").innerHTML = `Has utilizado una vida para continuar con la batalla`
@@ -879,7 +900,7 @@ const verificarCorazones = () => {
 //Funcion encargada de mostrar en pantalla la victoria del heroe
 const victoriaHeroe = () => {
     const cambioMusica = document.querySelector("#musicaJuego")
-    cambioMusica.innerHTML = `<audio src="./musica/soundtrackVictoria.mp3" autoplay="autoplay"></audio>`
+    cambioMusica.innerHTML = `<audio src="./assets/musica/soundtrackVictoria.mp3" autoplay="autoplay"></audio>`
     const seccionVictoria = document.getElementById("nuevoElemento")
     seccionVictoria.innerHTML = 
     `
@@ -890,10 +911,10 @@ const victoriaHeroe = () => {
                     <h2 class="tamañoFuenteH2 mensajeEleccion">HAS SALIDO VICTORIOSO DEL ENFRENTAMIENTO</h2>
                 </div>
                 <div class="col-12">
-                    <img class="movimientoVictoria" src="./img/victoria.png" alt="Logo de victoria">
+                    <img class="movimientoVictoria" src="./assets/img/logos/logoVictory.png" alt="Logo de victoria">
                 </div>
                 <div class="col-12">
-                    <img class="btnIrBatalla" src="./img/btnBack.svg" alt="Boton para volver" id="btnVolverInicio">
+                    <img class="btnIrBatalla" src="./assets/img/btns/btnBack.png" alt="Boton para volver" id="btnVolverInicio">
                 </div>
             </div>
         </div>
@@ -917,7 +938,7 @@ const victoriaHeroe = () => {
 //Funcion encargada de mostrar en pantalla la derrota del heroe
 const derrotaHeroe = () => {
     const cambioMusica = document.querySelector("#musicaJuego")
-    cambioMusica.innerHTML = `<audio src="./musica/soundtrackDerrota.mp3" autoplay="autoplay"></audio>`
+    cambioMusica.innerHTML = `<audio src="./assets/musica/soundtrackDerrota.mp3" autoplay="autoplay"></audio>`
     const seccionDerrota = document.getElementById("nuevoElemento")
     seccionDerrota.innerHTML = 
     `
@@ -928,10 +949,10 @@ const derrotaHeroe = () => {
                     <h2 class="tamañoFuenteH2 mensajeEleccion">HAS SUFRIDO UNA DERROTA ABISMAL</h2>
                 </div>
                 <div class="col-12">
-                    <img class="movimientoDerrota" src="./img/derrota.png" alt="Logo de derrota">
+                    <img class="movimientoDerrota" src="./assets/img/logos/logoDefeat.png" alt="Logo de derrota">
                 </div>
                 <div class="col-12">
-                    <img class="btnIrBatalla" src="./img/btnBack.svg" alt="Boton para volver" id="btnVolverInicio">
+                    <img class="btnIrBatalla" src="./assets/img/btns/btnBack.png" alt="Boton para volver" id="btnVolverInicio">
                 </div>
             </div>
         </div>
