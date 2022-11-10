@@ -27,7 +27,12 @@ oprimirJugar.onclick = () => {
 const ultimoHeroe = document.querySelector("#ultimoHeroe")
     ultimoHeroe.onclick = () => {
         const lastHero = localStorage.getItem("heroe")
-        Swal.fire(`EL ULTIMO PERSONAJE UTILIZADO FUE ${lastHero}`)
+        if (lastHero == null) {
+            Swal.fire(`TODAVIA NO HAS UTILIZADO NINGUN PERSONAJE`)
+        } else {
+            Swal.fire(`EL ULTIMO PERSONAJE UTILIZADO FUE ${lastHero}`)
+        }
+        
     }
 
 
