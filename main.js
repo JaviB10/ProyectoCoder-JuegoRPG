@@ -24,6 +24,12 @@ const oprimirJugar = document.querySelector("#jugar")
 oprimirJugar.onclick = () => {
     setTimeout(elegirHeroe, 400);
 }
+const ultimoHeroe = document.querySelector("#ultimoHeroe")
+    ultimoHeroe.onclick = () => {
+        const lastHero = localStorage.getItem("heroe")
+        Swal.fire(`EL ULTIMO PERSONAJE UTILIZADO FUE ${lastHero}`)
+    }
+
 
 //Funcion encargada de mostrar los personajes (Heroes), los cuales el usuario podra seleccionar para jugar, los mismo se crearan mediante un constructor el cual tendra informacion de los datos del JSON, y se guardaran dentro de un array
 const elegirHeroe = () => {
@@ -171,6 +177,7 @@ const obtenerApiLocalKnight = () => {
         .then((datos) => {
             const knightJson = datos.find(element => element.id == 1);
             personajes.push(knightJson);
+            localStorage.setItem("heroe", personajes[0].clase)
             personajes[0].vida = vidaAdquiridaH();
             mostrarEnemigo();
         })
@@ -186,6 +193,7 @@ const obtenerApiLocalWizard = () => {
         .then((datos) => {
             const wizardJson = datos.find(element => element.id == 2);
             personajes.push(wizardJson);
+            localStorage.setItem("heroe", personajes[0].clase)
             personajes[0].vida = vidaAdquiridaH();
             mostrarEnemigo();
         })
@@ -201,6 +209,7 @@ const obtenerApiLocalArcher = () => {
         .then((datos) => {
             const archerJson = datos.find(element => element.id == 3);
             personajes.push(archerJson);
+            localStorage.setItem("heroe", personajes[0].clase)
             personajes[0].vida = vidaAdquiridaH();
             mostrarEnemigo();
         })
