@@ -442,6 +442,7 @@ let decisionM = 0
 
 //Funcion donde se desarrolla toda la interfaz principal de la batalla, con los botones principales.
 const arrancaJuego = () => {
+    nuevaSeccion.classList.remove("bannerEleccion")
     nuevaSeccion.innerHTML = 
     `
     <main class="bannerBatalla">
