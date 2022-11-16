@@ -377,6 +377,7 @@ const mostrarEnemigo = () => {
         imagenMonstruo.setAttribute('src', "./assets/img/personajes/skeleton.jpg")
     }
     document.querySelector("#comenzarJuego").onclick = () => {
+        nuevaSeccion.classList.remove("bannerCarga")
         setTimeout(arrancaJuego, 200);
     }
 }
@@ -441,7 +442,6 @@ let decisionM = 0
 
 //Funcion donde se desarrolla toda la interfaz principal de la batalla, con los botones principales.
 const arrancaJuego = () => {
-    nuevaSeccion.classList.remove("bannerCarga")
     nuevaSeccion.innerHTML = 
     `
     <main class="bannerBatalla">
