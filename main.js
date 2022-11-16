@@ -337,6 +337,7 @@ const vidaAdquiridaM = () => {
 //Funcion que se encarga de mostrar la pantalla donde se vera reflejado el enemigo con el cual deberas enfrentarte
 const mostrarEnemigo = () => {
     elegirMonstruo();
+    nuevaSeccion.classList.remove("bannerCarga")
     nuevaMusica.innerHTML = `<audio src="./assets/musica/soundtrackBatalla.mp3" autoplay="autoplay" loop="loop"></audio>`
     nuevaSeccion.innerHTML = 
     `
@@ -377,7 +378,7 @@ const mostrarEnemigo = () => {
         imagenMonstruo.setAttribute('src', "./assets/img/personajes/skeleton.jpg")
     }
     document.querySelector("#comenzarJuego").onclick = () => {
-        nuevaSeccion.classList.remove("bannerCarga")
+        nuevaSeccion.classList.remove("bannerEleccion")
         setTimeout(arrancaJuego, 200);
     }
 }
@@ -442,7 +443,6 @@ let decisionM = 0
 
 //Funcion donde se desarrolla toda la interfaz principal de la batalla, con los botones principales.
 const arrancaJuego = () => {
-    nuevaSeccion.classList.remove("bannerEleccion")
     nuevaSeccion.innerHTML = 
     `
     <main class="bannerBatalla">
