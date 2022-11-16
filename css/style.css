@@ -217,24 +217,6 @@ p {
     height: 250px;
     
 }
-.animacionUno {
-    animation: lightSpeedInLeft 2s;
-}
-.animacionDos {
-    animation: lightSpeedInLeft 2s;
-}
-.animacionTres {
-    animation: lightSpeedInLeft 2s;
-}
-.animacionCuatro {
-    animation: lightSpeedInLeft 6s;
-}
-.animacionCinco {
-    animation: lightSpeedInLeft 2s;
-}
-.animacionSeis {
-    animation: lightSpeedInLeft 2s;
-}
 
 /* Estilos para la pagina de victoria*/
 .bannerVictoria {
