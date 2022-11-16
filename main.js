@@ -1,3 +1,6 @@
+const nuevaSeccion = document.querySelector("#nuevoElemento")
+const nuevaMusica = document.querySelector("#musicaJuego")
+
 //Array donde se alojaran los objetos Personaje.
 let personajes = []
 
@@ -22,26 +25,50 @@ class Personaje {
 //Funcion la cual nos llevara a la siguiente pantalla del juego
 const oprimirJugar = document.querySelector("#jugar")
 oprimirJugar.onclick = () => {
-    setTimeout(elegirHeroe, 400);
+    pantallaCarga();
+    setTimeout(elegirHeroe,2000)
 }
 const ultimoHeroe = document.querySelector("#ultimoHeroe")
-    ultimoHeroe.onclick = () => {
-        const lastHero = localStorage.getItem("heroe")
-        if (lastHero == null) {
-            Swal.fire(`TODAVIA NO HAS UTILIZADO NINGUN PERSONAJE`)
-        } else {
-            Swal.fire(`EL ULTIMO PERSONAJE UTILIZADO FUE ${lastHero}`)
-        }
-        
+ultimoHeroe.onclick = () => {
+    const lastHero = localStorage.getItem("heroe")
+    if (lastHero == null) {
+        Swal.fire(`TODAVIA NO HAS UTILIZADO NINGUN PERSONAJE`)
+    } else {
+        Swal.fire(`EL ULTIMO PERSONAJE UTILIZADO FUE ${lastHero}`)
     }
+        
+}
 
+//Funcion que muestra una pantalla que simula una espera para cargar la siguiente pantalla 
+const pantallaCarga = () => {
+    nuevaSeccion.innerHTML = 
+    `
+    <div class="position-absolute bottom-0 end-1 translate-middle-y" id="contenedorCarga">
+
+            <div id="carga">
+
+            </div>
+
+    </div>
+    `
+    nuevaSeccion.classList.remove("bannerPrincipal")
+    let eleccionImagen = Math.ceil(Math.random() * 4);
+    if (eleccionImagen == 1) {
+        nuevaSeccion.classList.add("bannerCarga")
+    } else if (eleccionImagen == 2) {
+        nuevaSeccion.classList.add("bannerCargaDos")
+    } else if (eleccionImagen == 3) {
+        nuevaSeccion.classList.add("bannerCargaTres")
+    } else {
+        nuevaSeccion.classList.add("bannerCargaCuatro")
+    }
+    nuevaMusica.innerHTML = ``
+}
 
 //Funcion encargada de mostrar los personajes (Heroes), los cuales el usuario podra seleccionar para jugar, los mismo se crearan mediante un constructor el cual tendra informacion de los datos del JSON, y se guardaran dentro de un array
 const elegirHeroe = () => {
-    const cambioMusica = document.querySelector("#musicaJuego")
-    cambioMusica.innerHTML = `<audio src="./assets/musica/soundtrackEleccion.mp3" autoplay="autoplay" loop="loop"></audio>`
-    const seccionHereoEleccion = document.getElementById("nuevoElemento")
-    seccionHereoEleccion.innerHTML = 
+    nuevaMusica.innerHTML = `<audio src="./assets/musica/soundtrackEleccion.mp3" autoplay="autoplay" loop="loop"></audio>`
+    nuevaSeccion.innerHTML = 
     `   
     <main class="bannerEleccion" id="batalla">
 
@@ -184,7 +211,9 @@ const obtenerApiLocalKnight = () => {
             personajes.push(knightJson);
             localStorage.setItem("heroe", personajes[0].clase)
             personajes[0].vida = vidaAdquiridaH();
-            mostrarEnemigo();
+            pantallaCarga();
+            setTimeout(mostrarEnemigo,2000)
+            
         })
         .catch((error) => {
             console.log(error)
@@ -200,7 +229,8 @@ const obtenerApiLocalWizard = () => {
             personajes.push(wizardJson);
             localStorage.setItem("heroe", personajes[0].clase)
             personajes[0].vida = vidaAdquiridaH();
-            mostrarEnemigo();
+            pantallaCarga();
+            setTimeout(mostrarEnemigo,2000)
         })
         .catch((error) => {
             console.log(error)
@@ -216,7 +246,8 @@ const obtenerApiLocalArcher = () => {
             personajes.push(archerJson);
             localStorage.setItem("heroe", personajes[0].clase)
             personajes[0].vida = vidaAdquiridaH();
-            mostrarEnemigo();
+            pantallaCarga();
+            setTimeout(mostrarEnemigo,2000)
         })
         .catch((error) => {
             console.log(error)
@@ -306,10 +337,8 @@ const vidaAdquiridaM = () => {
 //Funcion que se encarga de mostrar la pantalla donde se vera reflejado el enemigo con el cual deberas enfrentarte
 const mostrarEnemigo = () => {
     elegirMonstruo();
-    const cambioMusica = document.querySelector("#musicaJuego")
-    cambioMusica.innerHTML = `<audio src="./assets/musica/soundtrackBatalla.mp3" autoplay="autoplay" loop="loop"></audio>`
-    const seccionMonstruoEleccion = document.querySelector("#nuevoElemento")
-    seccionMonstruoEleccion.innerHTML = 
+    nuevaMusica.innerHTML = `<audio src="./assets/musica/soundtrackBatalla.mp3" autoplay="autoplay" loop="loop"></audio>`
+    nuevaSeccion.innerHTML = 
     `
     <main class="bannerEleccion">
 
@@ -339,7 +368,6 @@ const mostrarEnemigo = () => {
 
     </main>
     `
-    seccionMonstruoEleccion.classList.remove("bannerPrincipal")
     const imagenMonstruo = document.querySelector("#villano")
     if (eleccionM == 1){
         imagenMonstruo.setAttribute('src', "./assets/img/personajes/warriorWolf.jpg")
@@ -356,8 +384,7 @@ const mostrarEnemigo = () => {
 //Funcion que se encarga de mostrar la pantalla donde se vera reflejado el enemigo con el cual deberas enfrentarte
 const mostrarBoss = () => {
     elegirBoss();
-    const seccionBossEleccion = document.querySelector("#nuevoElemento")
-    seccionBossEleccion.innerHTML = 
+    nuevaSeccion.innerHTML = 
     `
     <main class="bannerEleccion">
 
@@ -414,8 +441,7 @@ let decisionM = 0
 
 //Funcion donde se desarrolla toda la interfaz principal de la batalla, con los botones principales.
 const arrancaJuego = () => {
-    const seccionBatalla = document.querySelector("#nuevoElemento")
-    seccionBatalla.innerHTML = 
+    nuevaSeccion.innerHTML = 
     `
     <main class="bannerBatalla">
 
@@ -514,7 +540,6 @@ const arrancaJuego = () => {
         
     </main>
     `
-    seccionBatalla.classList.remove("bannerPrincipal")
     if (golpeCriticoH < 3) {
         document.querySelector("#btnHabilidad").innerHTML = `<img class="btnAcciones" id="habilidad" src="./assets/img/btns/btnSkillNula.png" alt="Boton de habilidad">`
     } else {
@@ -825,13 +850,11 @@ const btnOpcion = () => {
     }
     const reproducirMusicaOf = document.querySelector("#musicaOff")
     reproducirMusicaOf.onclick = () => {
-        const musicaJuego = document.querySelector("#musicaJuego")
-        musicaJuego.innerHTML = `<audio id="musicaBatalla" autoplay="autoplay" loop="loop"></audio>`
+        nuevaMusica.innerHTML = `<audio id="musicaBatalla" autoplay="autoplay" loop="loop"></audio>`
     }
     const reproducirMusicaOn = document.querySelector("#musicaOn")
     reproducirMusicaOn.onclick = () => {
-        const musicaJuego = document.querySelector("#musicaJuego")
-        musicaJuego.innerHTML = `<audio id="musicaBatalla" src="./assets/musica/soundtrackBatalla.mp3" autoplay="autoplay" loop="loop"></audio>` 
+        nuevaMusica.innerHTML = `<audio id="musicaBatalla" src="./assets/musica/soundtrackBatalla.mp3" autoplay="autoplay" loop="loop"></audio>` 
     }
     const volverAcciones = document.querySelector("#volverAcciones")
     volverAcciones.onclick = () => {
@@ -1042,10 +1065,8 @@ const verificarCorazones = () => {
 
 //Funcion encargada de mostrar en pantalla la victoria del heroe
 const victoriaHeroe = () => {
-    const cambioMusica = document.querySelector("#musicaJuego")
-    cambioMusica.innerHTML = `<audio src="./assets/musica/soundtrackVictoria.mp3" autoplay="autoplay"></audio>`
-    const seccionVictoria = document.querySelector("#nuevoElemento")
-    seccionVictoria.innerHTML = 
+    nuevaMusica.innerHTML = `<audio src="./assets/musica/soundtrackVictoria.mp3" autoplay="autoplay"></audio>`
+    nuevaSeccion.innerHTML = 
     `
     <main class="bannerVictoria">
 
@@ -1092,10 +1113,8 @@ const victoriaHeroe = () => {
 
 //Funcion encargada de mostrar en pantalla la derrota del heroe
 const derrotaHeroe = () => {
-    const cambioMusica = document.querySelector("#musicaJuego")
-    cambioMusica.innerHTML = `<audio src="./assets/musica/soundtrackDerrota.mp3" autoplay="autoplay"></audio>`
-    const seccionDerrota = document.getElementById("nuevoElemento")
-    seccionDerrota.innerHTML = 
+    nuevaMusica.innerHTML = `<audio src="./assets/musica/soundtrackDerrota.mp3" autoplay="autoplay"></audio>`
+    nuevaSeccion.innerHTML = 
     `
     <main class="bannerDerrota">
 

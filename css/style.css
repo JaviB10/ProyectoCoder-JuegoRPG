@@ -2,6 +2,7 @@
     font-family: OptimusPrincepsSemiBold;
     src: url(../assets/fuentes/OptimusPrincepsSemiBold.ttf);
 }
+
 /* Estilos generales */
 * {
     margin: 0;
@@ -28,6 +29,76 @@ p {
 .colorRojo {
     color: red;
 }
+
+/* Estilos para la pantalla de carga */
+*,*:After, *:before {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+#contenedor_carga {
+    background-image: none;
+    background-color: rgb(250, 240, 245, 0.9);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    -webkit-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+    z-index: 10000;
+}
+#carga {
+    border: 10px solid rgb(0, 0, 0);
+    border-top-color:  #f80000;
+    border-top-style: double;
+    width: 75px;
+    height: 75px;
+    border-radius: 100%;
+
+
+    -webkit-animation: girar 1.5s linear infinite;
+    -o-animation: girar 1.5s linear infinite;
+    animation: girar 1.5s linear infinite;
+}
+@keyframes girar {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+.bannerCarga {
+    width: 100%;
+    height: 100vh;
+    background-image: url(../assets/img/banners/bannerCarga.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+.bannerCargaDos {
+    width: 100%;
+    height: 100vh;
+    background-image: url(../assets/img/banners/bannerCargaDos.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+.bannerCargaTres {
+    width: 100%;
+    height: 100vh;
+    background-image: url(../assets/img/banners/bannerCargaTres.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+.bannerCargaCuatro {
+    width: 100%;
+    height: 100vh;
+    background-image: url(../assets/img/banners/bannerCargaCuatro.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
 /* Estilos para la primera pantalla */
 .contenedorPrimero{
     height: 100vh;
@@ -52,7 +123,9 @@ p {
     height: 50px;
     cursor: pointer;
 }
-
+.btnUltimoHeroe {
+    cursor: pointer;
+}
 
 /* Estilos para la segunda pantalla */
 .contenedorSegundo{
@@ -142,6 +215,25 @@ p {
 .jugadorHeroe {
     width: 300px;
     height: 250px;
+    
+}
+.animacionUno {
+    animation: lightSpeedInLeft 2s;
+}
+.animacionDos {
+    animation: lightSpeedInLeft 2s;
+}
+.animacionTres {
+    animation: lightSpeedInLeft 2s;
+}
+.animacionCuatro {
+    animation: lightSpeedInLeft 6s;
+}
+.animacionCinco {
+    animation: lightSpeedInLeft 2s;
+}
+.animacionSeis {
+    animation: lightSpeedInLeft 2s;
 }
 
 /* Estilos para la pagina de victoria*/
